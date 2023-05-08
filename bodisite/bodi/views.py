@@ -26,3 +26,6 @@ def logout_user(request):
     logout(request)
     messages.success(request, "Ви успічно вийщли з облікового запису")
     return redirect('home')
+
+def register_user(request):
+    return render(request, 'bodi/register.html', {})
