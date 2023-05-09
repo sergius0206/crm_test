@@ -1,0 +1,50 @@
+{% extends 'bodi/base.html'   %}
+{% block content %}
+
+<div class="card">
+    <dir class="card-header"><strong>
+        {{ customer_record.first_name }} 
+        {{ customer_record.last_name }}</strong>
+
+    </dir>
+    <div class="card-body">
+
+        
+        <p class="card-text">         
+        <strong>№ :</strong>{{ customer_record.id }}
+        </p>
+
+        <p class="card-text">    
+        <strong>Еmail :</strong>{{ customer_record.email }} </p>
+
+        <p class="card-text">
+        <strong>Телефон :</strong>{{ customer_record.state }} 
+            {{ customer_record.phone }} </p>
+
+        <p class="card-text">
+        <strong>Адреса :</strong>{{ customer_record.address }} </p>
+
+        <p class="card-text">
+        <strong>Місто :</strong>{{ customer_record.sity }}  </p>
+
+        <p class="card-text">
+        <strong>Індекс :</strong>{{ customer_record.zipcode }} </p>
+
+        <p class="card-text">
+        <strong>Дата рег. :</strong>{{ customer_record.created_at }}</p>
+        
+
+    </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">На головну</a>
+<a href="{% url 'delit_record' customer_record.id %}" class="btn btn-danger">Видалити</a>
+     
+
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-danger">Змінити</a>
+
+
+
+
+{% endblock %}

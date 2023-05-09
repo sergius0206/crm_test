@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
+
 
 class SignUpForm(UserCreationForm):
     """Форма регістрації Bootstrap"""
@@ -31,3 +33,20 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Підтвердьте пароль'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Для підтвердження введіть той самий пароль, що й раніше.</small></span>'
+
+
+# Форма створити
+class AddRecordForm(forms.ModelForm):
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Ім'я", "class": "form-control" }), label="")
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Прізвище", "class": "form-control" }), label="")
+    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Email", "class": "form-control" }), label="")
+    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Телефон", "class": "form-control" }), label="")
+    address = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Адреса", "class": "form-control" }), label="")
+    sity = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Місто", "class": "form-control" }), label="")
+    state = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Країна", "class": "form-control" }), label="")
+    zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Індекс", "class": "form-control" }), label="")
+
+    class Meta:
+        model = Record
+        exclude = ('user',)
+
